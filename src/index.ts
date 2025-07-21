@@ -1,4 +1,5 @@
 import { Todo } from "./types";
+import { User } from "./types";
 
 const todos : Todo[] = [];
 
@@ -16,3 +17,5 @@ addTodo("Compra il latte");
 addTodo("Compra i biscotti")
 
 console.log(todos)
+
+

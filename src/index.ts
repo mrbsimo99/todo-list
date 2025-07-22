@@ -66,4 +66,14 @@ assignTodoToUser(2, 2);
 console.log(todos);
 console.log(users)
 
-// Domanda per Manfro, non sarebbe meglio sostituire id con userId nell'interfaccia User?
+// Creare una funzione per ottenere i Todos di un utente
+
+function getUserTodos(userId: number) : Todo[] {
+    return todos.filter(todo => todo.userId === userId);
+}
+
+const userTodos = getUserTodos(1);
+const userTodos2 = getUserTodos(2);
+
+console.log(userTodos);
+console.log(userTodos2);

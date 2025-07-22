@@ -1,12 +1,16 @@
 import { Todo, User } from "./types";
 
+// Implementare interfaccia Todo
+
 const todos: Todo[] = [];
+
+// Aggiungere una funzione per Aggiungere un Todo
 
 let newId = 1;
 
 function addTodo(title: string): Todo {
     const newTodo: Todo = {
-        id: newId++, 
+        id: newId++,
         title,
         completed: false
     };
@@ -22,7 +26,6 @@ console.log(todos)
 // Associare Todo con Utenti
 
 const users: User[] = [];
-
 let newUserId = 1;
 
 function addUser(name: string, email?: string): User {
@@ -57,8 +60,8 @@ function assignTodoToUser(todoId: number, userId: number): Todo | string {
     return todo;
 }
 
-assignTodoToUser(1,1);
-assignTodoToUser(2,2);
+assignTodoToUser(1, 1);
+assignTodoToUser(2, 2);
 
 console.log(todos);
 console.log(users)

@@ -1,4 +1,4 @@
-import { Todo, User } from "./types";
+import { Todo, TodowithMetadata, User } from "./types";
 
 // Implementare interfaccia Todo
 
@@ -8,19 +8,65 @@ const todos: Todo[] = [];
 
 let newId = 1;
 
-function addTodo(title: string): Todo {
+/* function addTodo(title: string, metadata?: any): Todo {
     const newTodo: Todo = {
         id: newId++,
         title,
-        completed: false
+        completed: false,
+        metadata
     };
 
     todos.push(newTodo);
     return newTodo
-}
-addTodo("3x8-10 Panca Piana");
-addTodo("3x max Dips")
+} */
 
+/* function addTodo(title: string, metadata: any): TodowithMetadata {
+   const newTodo: TodowithMetadata = {
+       id: newId++,
+       title,
+       completed: false,
+       metadata
+   };
+
+   todos.push(newTodo);
+   return newTodo
+} */
+
+function addTodo(title: string, metadata?: string | object): Todo {
+    const newTodo: Todo = {
+        id: newId++,
+        title,
+        completed: false,
+        metadata
+    };
+    todos.push(newTodo);
+    return newTodo
+}
+
+addTodo("3x8-10 Panca Piana", "metadata");
+addTodo("3x max Dips", "metadata")
+
+console.log(todos);
+
+function updateTodo(todoId: number, fieldsToUpdate: Partial<Todo>): Todo | undefined {
+    const index = todos.findIndex(todo => todo.id === todoId);
+
+    if (index === - 1) {
+        console.error(`${todoId} non trovato.`)
+        return;
+    }
+
+    const updatedTodo = {
+        ...todos[index],
+        ...fieldsToUpdate
+    };
+
+    todos[index] = updatedTodo;
+
+    return updatedTodo;
+}
+
+updateTodo(1, { title: "Andare a scostumate", completed: true })
 console.log(todos)
 
 // Associare Todo con Utenti
@@ -32,7 +78,9 @@ function addUser(name: string, email?: string): User {
     const newUser: User = {
         id: newUserId++, // userId :newUserId++
         name,
-        email
+        email,
+        todos :[]
+
     };
 
     users.push(newUser);
@@ -68,7 +116,7 @@ console.log(users)
 
 // Creare una funzione per ottenere i Todos di un utente
 
-function getUserTodos(userId: number) : Todo[] {
+function getUserTodos(userId: number): Todo[] {
     return todos.filter(todo => todo.userId === userId);
 }
 
@@ -77,3 +125,22 @@ const userTodos2 = getUserTodos(2);
 
 console.log(userTodos);
 console.log(userTodos2);
+
+
+// Gestione degli Errori con Never
+
+const throwError = (message?: string): never => {
+    throw new Error(message);
+}
+
+function parseInput(input: unknown): string {
+    if (typeof input === "string") {
+        return input
+    } if (typeof input === "number") {
+        return input.toString()
+    }
+    return throwError("Errore interno")
+};
+
+console.log(parseInput(20));
+console.log(parseInput("Ciao"))

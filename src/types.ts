@@ -1,12 +1,18 @@
 export interface Todo {
     id: number,
     title: string,
-    completed: boolean;
-    userId?: number
+    completed: boolean,
+    userId?: number,
+    metadata?: any;
 }
 
 export interface User {
     id: number,
     name: string,
     email?: string;
+    todos: ReadonlyArray<Todo>
+}
+
+export interface TodowithMetadata extends Todo {
+    metadata: any
 }

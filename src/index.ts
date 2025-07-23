@@ -8,6 +8,8 @@ const todos: Todo[] = [];
 
 let newId = 1;
 
+// Funzione che tiene conto di metadata opzionale con any
+
 /* function addTodo(title: string, metadata?: any): Todo {
     const newTodo: Todo = {
         id: newId++,
@@ -19,6 +21,8 @@ let newId = 1;
     todos.push(newTodo);
     return newTodo
 } */
+
+// Funzione che tiene conto dell'extends TodowithMetadata
 
 /* function addTodo(title: string, metadata: any): TodowithMetadata {
    const newTodo: TodowithMetadata = {
@@ -66,7 +70,7 @@ function updateTodo(todoId: number, fieldsToUpdate: Partial<Todo>): Todo | undef
     return updatedTodo;
 }
 
-updateTodo(1, { title: "Andare a scostumate", completed: true })
+updateTodo(1, { title: "3x6-8 Inclined Chest Press", completed: false })
 console.log(todos)
 
 // Associare Todo con Utenti
@@ -79,7 +83,7 @@ function addUser(name: string, email?: string): User {
         id: newUserId++, // userId :newUserId++
         name,
         email,
-        todos :[]
+        todos: []
 
     };
 
@@ -133,6 +137,8 @@ const throwError = (message?: string): never => {
     throw new Error(message);
 }
 
+// Gestione dei Tipi Dinamici con Unknown
+
 function parseInput(input: unknown): string {
     if (typeof input === "string") {
         return input
@@ -144,3 +150,18 @@ function parseInput(input: unknown): string {
 
 console.log(parseInput(20));
 console.log(parseInput("Ciao"))
+
+// Utilizzare Tuple
+
+function getTodoSummary(todoId: number): [string, boolean] | undefined {
+    const todo = todos.find(todo => todo.id === todoId);
+
+    if (!todo) {
+        console.error(`${todoId} non trovato`)
+        return;
+    }
+    return [todo.title, todo.completed];
+}
+
+const summary = getTodoSummary(1);
+console.log("Summary:", summary);

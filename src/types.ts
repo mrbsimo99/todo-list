@@ -3,7 +3,7 @@ export interface Todo {
     title: string,
     completed: boolean,
     userId?: number,
-    metadata?: any;
+    metadata?: any; // Utilizzare tipo any
 }
 
 export interface User {
@@ -12,6 +12,9 @@ export interface User {
     email?: string;
     todos: ReadonlyArray<Todo>
 }
+
+
+// Creare Tipi derivati con Extends
 
 export interface TodowithMetadata extends Todo {
     metadata: any

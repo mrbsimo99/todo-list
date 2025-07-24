@@ -120,4 +120,13 @@ function getTodoSummary(todoId) {
     return [todo.title, todo.completed];
 }
 const summary = getTodoSummary(1);
-console.log("Summary:", summary);
+console.log("Riepilogo dei todo:", summary);
+function createProject(users, todos) {
+    const newProject = {
+        users,
+        todos
+    };
+    return newProject;
+}
+const project = createProject(users, todos);
+console.log("Riepilogo del progetto:", project);

@@ -1,4 +1,4 @@
-import { Todo, TodowithMetadata, User } from "./types";
+import { Todo, TodowithMetadata, User, Project } from "./types";
 
 // Implementare interfaccia Todo
 
@@ -164,4 +164,17 @@ function getTodoSummary(todoId: number): [string, boolean] | undefined {
 }
 
 const summary = getTodoSummary(1);
-console.log("Summary:", summary);
+console.log("Riepilogo dei todo:", summary);
+
+
+
+function createProject(users: User[], todos: Todo[]) : Project {
+    const newProject: Project = {
+        users,
+        todos 
+    };
+    return newProject;
+}
+
+const project = createProject(users, todos);
+console.log("Riepilogo del progetto:", project);

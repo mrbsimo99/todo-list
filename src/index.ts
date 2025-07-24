@@ -168,10 +168,10 @@ console.log("Riepilogo dei todo:", summary);
 
 
 
-function createProject(users: User[], todos: Todo[]) : Project {
+function createProject(users: User[], todos: Todo[]): Project {
     const newProject: Project = {
         users,
-        todos 
+        todos
     };
     return newProject;
 }

@@ -3,7 +3,15 @@ export interface Todo {
     title: string,
     completed: boolean,
     userId?: number,
-    metadata?: any; // Utilizzare tipo any
+    metadata?: any,
+    status: TodoStatus;
+
+}
+
+export enum TodoStatus {
+    Pending = "Pending",
+    InProgress = "In Progress",
+    Completed = "Completed"
 }
 
 export interface User {
@@ -13,9 +21,6 @@ export interface User {
     readonly todos: Todo[];
 }
 
-
-// Creare Tipi derivati con Extends
-
 export interface TodowithMetadata extends Todo {
     metadata: any
 }
@@ -24,3 +29,5 @@ export interface Project {
     users: User[],
     todos: Todo[];
 }
+
+

@@ -1,4 +1,5 @@
-import { Todo, TodowithMetadata, User, Project } from "./types";
+import { Todo, TodowithMetadata, User, Project, TodoStatus } from "./types";
+
 
 // Implementare interfaccia Todo
 
@@ -41,7 +42,8 @@ function addTodo(title: string, metadata?: string | object): Todo {
         id: newId++,
         title,
         completed: false,
-        metadata
+        metadata,
+        status: TodoStatus.Pending
     };
     todos.push(newTodo);
     return newTodo
